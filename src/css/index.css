@@ -1,0 +1,21 @@
+body {
+    font-family: "Cardo", Georgia, serif;
+    font-size: 1.35vw;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#chart-name {
+    padding: 0.5em;
+    border: 0.5em;
+    margin: 0 auto;
+    width: 15vw;
+}
+
+.chart-container {
+    padding: 0.5em;
+    border: 0.5em;
+    margin: 0 auto;
+    width: 80vw;
+    height: 80vh;
+}
