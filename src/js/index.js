@@ -114,6 +114,15 @@ let lineChart = new Chart(currChart, {
     },
 })
 
+const resetZoomBtn = (chart) => {
 
+    chart.resetZoom()
+
+};
+
+const resetZoomButton = document.getElementById('resetZoomBtn');
+resetZoomButton.addEventListener('click', () => {
+    resetZoomBtn(lineChart);
+});
 
 
