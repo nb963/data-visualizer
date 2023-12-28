@@ -1,20 +1,21 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Data Visualizer</title>
-    <link rel="stylesheet" href="src/css/index.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="src/js/chart.js"></script>
-  </head>
-
-  <body>
-    <h1 id="chart-name" class="chart-name">S&P Chart</h1>
-    <div class="chart-container" id="chart-container"> 
-        <canvas id="myChart"></canvas>
-    </div>
-    
-
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Data Visualizer</title>
+        <link rel="stylesheet" href="src/css/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.1.1/chartjs-plugin-zoom.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+        <script type="module" src="src/js/index.js"></script>
+    </head>
+    <body>
+        <h1 id="chart-name" class="chart-name" role="img">S&P 500 Total Return Index</h1>
+        <div class="chart-container" id="chart-container"> 
+            <canvas id="myChart"></canvas>
+            <button type="button" class="btn-class" id="resetZoomBtn">Reset Zoom</button>
+        </div>
+    </body>
 </html>

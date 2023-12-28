@@ -1,21 +1,34 @@
 body {
     font-family: "Cardo", Georgia, serif;
-    font-size: 1.35vw;
-    background-color: #f4f4f4;
-    color: #333;
+    font-weight: lighter;
+    background-color: white;
+    color: #083966;
+    text-align: center;
 }
 
 #chart-name {
+    text-align: center;
     padding: 0.5em;
     border: 0.5em;
     margin: 0 auto;
-    width: 15vw;
 }
 
 .chart-container {
     padding: 0.5em;
     border: 0.5em;
     margin: 0 auto;
-    width: 80vw;
-    height: 80vh;
+    width: 90vw;
+    height: 78vh;
+}
+
+.btn-class {
+    width: 15%;
+    height: 8%;
+    font-family: "Cardo", Georgia, serif;
+    padding: 0.5em;
+    border: 0.5em;
+    margin: 0 auto;
+    color: white;
+    background-color: #083966;
+
 }
