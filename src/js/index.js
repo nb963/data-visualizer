@@ -32,6 +32,7 @@ let currChart = document.getElementById('myChart').getContext('2d')
 
 Chart.defaults.font.size = 16;
 Chart.defaults.font.family = "serif"
+
 let lineChart = new Chart(currChart, {
     type: 'line',
     data: {
@@ -43,6 +44,8 @@ let lineChart = new Chart(currChart, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
             x: {
                 type: 'time',
@@ -55,12 +58,7 @@ let lineChart = new Chart(currChart, {
                     tooltipFormat: 'dd MMM yyyy',
                 },
                 title: {
-                    display: true,
-                    text: 'Dates',
-                    font: {
-                        size: '18px',
-                        weight: 'bold'
-                    }
+                    display: false,
                 },
                 min: '1990-01-02',
                 max: '2022-09-30',
@@ -86,12 +84,6 @@ let lineChart = new Chart(currChart, {
                     drag: {
                         enabled: true
                     },
-                    // wheel: {
-                    //     enabled: false,
-                    // },
-                    // pinch: {
-                    //     enabled: false,
-                    // },
                     mode: 'x',
                 },
             },
@@ -105,7 +97,7 @@ let lineChart = new Chart(currChart, {
                         if (label) {
                             label += ': ';
                         }
-                        label += 'Total Return in %:  ' + context.formattedValue; // Modify 'Prefix' to your desired prefix
+                        label += 'Total Returns: ' + context.formattedValue + "%"; // Modify 'Prefix' to your desired prefix
                         return label;
                     }
                 }

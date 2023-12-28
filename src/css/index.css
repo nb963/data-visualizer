@@ -3,32 +3,43 @@ body {
     font-weight: lighter;
     background-color: white;
     color: #083966;
+    align-items: center;
     text-align: center;
 }
 
+
+button {
+    padding: 1em;
+    margin: 0.25em 0.5em 0.5em;
+    border-radius: 5px;
+    width: 15%;
+    height: 8%;
+    font-family: "Cardo", Georgia, serif;
+    color: white;
+    background-color: #083966;
+
+}
+
+button:hover {
+    background-color: #c4e0ed;
+    color: #083966;
+}
+
+button:active {
+    background-color: black;
+    color: white;
+}
+
 #chart-name {
-    text-align: center;
     padding: 0.5em;
     border: 0.5em;
     margin: 0 auto;
 }
 
 .chart-container {
+    min-width: 50%;
     padding: 0.5em;
     border: 0.5em;
-    margin: 0 auto;
-    width: 90vw;
-    height: 78vh;
-}
-
-.btn-class {
-    width: 15%;
-    height: 8%;
-    font-family: "Cardo", Georgia, serif;
-    padding: 0.5em;
-    border: 0.5em;
-    margin: 0 auto;
-    color: white;
-    background-color: #083966;
-
+    margin: 0.5em auto;
+    width: 85%;
 }
