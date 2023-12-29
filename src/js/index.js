@@ -3,7 +3,6 @@ import data from '/src/data/rawreturns.json' assert { type: 'json' }
 let xVals = []
 
 data.forEach(function (item) {
-    // Get the keys of the object and then get the value of the 
     let keys = Object.keys(item)
     xVals.push(item[keys[1]])
 });
@@ -12,7 +11,6 @@ data.forEach(function (item) {
 let yVals1Percent = []
 
 data.map(function (item) {
-    // Get the keys of the object and then get the value of the 
     let keys = Object.keys(item);
     let add1percent = 1 + (item[keys[2]] / 100)
     yVals1Percent.push(add1percent)
@@ -21,12 +19,25 @@ data.map(function (item) {
 
 let yVals = [];
 let currProduct = 1;
+let maxReturn = -1000000000
+let minReturn = 1000000000
+let arrayElem = 0
 
 yVals1Percent.forEach(function (currentValue) {
     currProduct *= currentValue;
-    yVals.push(parseFloat((currProduct - 1) * 100).toFixed(4));
+    arrayElem = parseFloat((currProduct - 1) * 100).toFixed(4)
+    yVals.push(arrayElem)
+    maxReturn = Math.max(arrayElem, maxReturn)
+    minReturn = Math.min(arrayElem, minReturn)
 });
 
+// let maxElem = document.getElementById("max-pt")
+// maxElem.innerHTML = "Max Total Return: " + maxReturn
+
+// let minElem = document.getElementById("min-pt")
+// minElem.innerHTML = "Min Total Return: " + minReturn
+
+console.log(minReturn, maxReturn)
 
 let currChart = document.getElementById('myChart').getContext('2d')
 
@@ -41,9 +52,16 @@ let lineChart = new Chart(currChart, {
             data: yVals,
             borderColor: '#083966',
             backgroundColor: '#516c8a',
+            pointBackgroundColor: customColor,
         }]
     },
     options: {
+        elements: {
+            point: {
+                radius: customRadius,
+                display: true
+            }
+        },
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -56,6 +74,10 @@ let lineChart = new Chart(currChart, {
                         day: "dd MMM yyyy"
                     },
                     tooltipFormat: 'dd MMM yyyy',
+                },
+                ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 24
                 },
                 title: {
                     display: false,
@@ -88,16 +110,24 @@ let lineChart = new Chart(currChart, {
                 },
             },
             legend: {
-                display: false
+                display: false,
             },
             tooltip: {
                 callbacks: {
                     label: function (context) {
                         var label = context.dataset.label || '';
+                        var index = context.dataIndex;
+                        var value = parseFloat(context.dataset.data[index]).toFixed(4);
                         if (label) {
-                            label += ': ';
+                            label += ": ";
                         }
-                        label += 'Total Returns: ' + context.formattedValue + "%"; // Modify 'Prefix' to your desired prefix
+                        if (value == minReturn) {
+                            label += "Minimum Total Returns: " + context.formattedValue + "%"
+                        } else if (value == maxReturn) {
+                            label += "Maximum Total Returns: " + context.formattedValue + "%"
+                        } else {
+                            label += "Total Returns: " + context.formattedValue + "%";
+                        }
                         return label;
                     }
                 }
@@ -105,6 +135,31 @@ let lineChart = new Chart(currChart, {
         }
     },
 })
+
+function customColor(context) {
+    let index = context.dataIndex;
+    let value = parseFloat(context.dataset.data[index]).toFixed(4);
+
+    if (value == minReturn) {
+        return 'red'
+    } else if (value == maxReturn) {
+        return 'green'
+    }
+
+    return '#516c8a'
+}
+
+
+function customRadius(context) {
+    let index = context.dataIndex;
+    let value = parseFloat(context.dataset.data[index]).toFixed(4);
+
+    if (value == minReturn || value == maxReturn) {
+        return 4
+    }
+
+    return 2
+}
 
 const resetZoomBtn = (chart) => {
 

@@ -43,3 +43,14 @@ button:active {
     margin: 0.5em auto;
     width: 85%;
 }
+
+/* .data-pts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.pt-class {
+    font-weight: bold;
+} */
