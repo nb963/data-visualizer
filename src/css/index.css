@@ -1,3 +1,7 @@
+/* This file contains the styling for all the HTML elements and the chart placement.
+Added responsive web development features and used box model to design elements. All 
+the colors were also chosen from the color palette of Investure's current website. */
+
 body {
     font-family: "Cardo", Georgia, serif;
     font-weight: lighter;
@@ -11,6 +15,7 @@ body {
 button {
     padding: 1em;
     margin: 0.25em 0.5em 0.5em;
+    border: 0.5em;
     border-radius: 5px;
     width: 15%;
     height: 8%;
@@ -43,14 +48,3 @@ button:active {
     margin: 0.5em auto;
     width: 85%;
 }
-
-/* .data-pts {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.pt-class {
-    font-weight: bold;
-} */

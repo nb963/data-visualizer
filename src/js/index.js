@@ -1,8 +1,16 @@
+// This file contains the functionality of the chart, the style of the points and 
+// functions that calculate the total returns from the given data. The file also 
+// contains functions that help reset the scale of the chart as well as help style 
+// the chart points. 
+
 import data from '/src/data/rawreturns.json' assert { type: 'json' }
 
 let xVals = []
 
 data.forEach(function (item) {
+    // Getting the dates of the total returns 
+    // from the JSON object as the x-values
+
     let keys = Object.keys(item)
     xVals.push(item[keys[1]])
 });
@@ -11,6 +19,9 @@ data.forEach(function (item) {
 let yVals1Percent = []
 
 data.map(function (item) {
+    // Calculating the added 1 percent y-values
+    // from the JSON object 
+
     let keys = Object.keys(item);
     let add1percent = 1 + (item[keys[2]] / 100)
     yVals1Percent.push(add1percent)
@@ -24,6 +35,10 @@ let minReturn = 1000000000
 let arrayElem = 0
 
 yVals1Percent.forEach(function (currentValue) {
+    // Calculating the total returns from the 
+    // the JSON object and finding the maximum
+    // and the minimum total returns
+
     currProduct *= currentValue;
     arrayElem = parseFloat((currProduct - 1) * 100).toFixed(4)
     yVals.push(arrayElem)
@@ -31,15 +46,9 @@ yVals1Percent.forEach(function (currentValue) {
     minReturn = Math.min(arrayElem, minReturn)
 });
 
-// let maxElem = document.getElementById("max-pt")
-// maxElem.innerHTML = "Max Total Return: " + maxReturn
-
-// let minElem = document.getElementById("min-pt")
-// minElem.innerHTML = "Min Total Return: " + minReturn
-
-console.log(minReturn, maxReturn)
-
 let currChart = document.getElementById('myChart').getContext('2d')
+
+// Chart styling
 
 Chart.defaults.font.size = 16;
 Chart.defaults.font.family = "serif"
@@ -53,12 +62,14 @@ let lineChart = new Chart(currChart, {
             borderColor: '#083966',
             backgroundColor: '#516c8a',
             pointBackgroundColor: customColor,
+            // setting different colors for the points
         }]
     },
     options: {
         elements: {
             point: {
                 radius: customRadius,
+                // setting different radius for the points
                 display: true
             }
         },
@@ -66,6 +77,7 @@ let lineChart = new Chart(currChart, {
         maintainAspectRatio: false,
         scales: {
             x: {
+                // formatting the values on the x-axis
                 type: 'time',
                 time: {
                     unit: 'day',
@@ -82,8 +94,6 @@ let lineChart = new Chart(currChart, {
                 title: {
                     display: false,
                 },
-                min: '1990-01-02',
-                max: '2022-09-30',
                 position: 'bottom',
             },
             y: {
@@ -106,6 +116,7 @@ let lineChart = new Chart(currChart, {
                     drag: {
                         enabled: true
                     },
+                    // adding the click + drag zoom feature
                     mode: 'x',
                 },
             },
@@ -121,6 +132,7 @@ let lineChart = new Chart(currChart, {
                         if (label) {
                             label += ": ";
                         }
+                        // adding custom labels to the points on the axis
                         if (value == minReturn) {
                             label += "Minimum Total Returns: " + context.formattedValue + "%"
                         } else if (value == maxReturn) {
@@ -141,11 +153,12 @@ function customColor(context) {
     let value = parseFloat(context.dataset.data[index]).toFixed(4);
 
     if (value == minReturn) {
-        return 'red'
+        return 'red' // if minimum return, the point is colored red
     } else if (value == maxReturn) {
-        return 'green'
+        return 'green' // if maximum return, the point is colored green
     }
 
+    // else point is colored blue
     return '#516c8a'
 }
 
@@ -154,6 +167,8 @@ function customRadius(context) {
     let index = context.dataIndex;
     let value = parseFloat(context.dataset.data[index]).toFixed(4);
 
+    // increasing the size of the point if the return is the 
+    // maximum or the minimum return 
     if (value == minReturn || value == maxReturn) {
         return 4
     }
@@ -161,8 +176,8 @@ function customRadius(context) {
     return 2
 }
 
+// resetting the size of the chart if the chart is not the original size
 const resetZoomBtn = (chart) => {
-
     chart.resetZoom()
 
 };
@@ -171,5 +186,6 @@ const resetZoomButton = document.getElementById('resetZoomBtn');
 resetZoomButton.addEventListener('click', () => {
     resetZoomBtn(lineChart);
 });
+
 
 

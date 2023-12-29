@@ -1,3 +1,6 @@
+<!-- This file contains the basic structure of all the elements on the webpage.
+This page has all the imports to the different libraries and plugins required for ChartJS. -->
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -13,13 +16,11 @@
     </head>
     <body>
         <h1 id="chart-name" class="chart-name" role="img">S&P 500 Total Return Index</h1>
-        <!-- <div class="data-pts">
-            <p id="max-pt" class="pt-class" style="color: green;">Max Total Return: </p>
-            <p id="min-pt" class="pt-class" style="color: red;">Min Total Return: </p>
-        </div> -->
-        <div class="zoom-instructions">
+
+        <div id="zoom-instructions">
             <p>*Please click and drag over the area of the chart that you wish to zoom into</p>
         </div>
+
         <div class="chart-container" id="chart-container">
             <canvas id="myChart" style="height: 70vh;"></canvas>
         </div>
