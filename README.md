@@ -8,7 +8,7 @@ In this project, I have used HTML/CSS and JavaScript. In JavaScript, I have used
 
 # Table of Contents
 
-- [Chart.js Line Chart Project](#data-visualizer)
+- [Total Returns Line Chart Project](#data-visualizer)
   - [Description](#description)
   - [Features](#features)
   - [Installation](#installation)
@@ -23,19 +23,16 @@ The project has features that displays all the total returns over time. The char
 # Installation
 1. Clone the following repository:
 ``` 
-   bash 
    git clone https://github.com/nb963/data-visualizer 
 ```
 
 2. Navigate into the the repository
 ```
-    bash 
     cd data-visualizer
 ```
 
 3. Set up a local HTTP server
 ```
-    bash 
     python3 -m http.server
 ```
 
