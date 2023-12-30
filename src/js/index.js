@@ -155,7 +155,7 @@ function customColor(context) {
     if (value == minReturn) {
         return 'red' // if minimum return, the point is colored red
     } else if (value == maxReturn) {
-        return 'green' // if maximum return, the point is colored green
+        return '#00cf18' // if maximum return, the point is colored green
     }
 
     // else point is colored blue
