@@ -12,6 +12,7 @@ In this project, I have used HTML/CSS and JavaScript. In JavaScript, I have used
   - [Description](#description)
   - [Features](#features)
   - [Installation](#installation)
+  - [Notes about Testing][#testing]
 
 
 # Description
@@ -22,19 +23,23 @@ The project has features that displays all the total returns over time. The char
 
 # Installation
 1. Clone the following repository:
-``` 
+```bash
    git clone https://github.com/nb963/data-visualizer 
 ```
 
 2. Navigate into the the repository
-```
+```bash
     cd data-visualizer
 ```
 
 3. Set up a local HTTP server
-```
+```bash
     python3 -m http.server
 ```
 
 4. Navigate to http://localhost:8000/ and view the chart!
+
+# Testing
+
+This project was tested by testing all the indvidual functions on the browswer and providing new data points to visualize. These yielded expected results.
 
